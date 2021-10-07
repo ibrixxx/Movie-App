@@ -1,13 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import IndexPage from "./Views/IndexPage";
+import CategoryPage from "./Views/CategoryPage";
+import SearchPage from "./Views/SearchPage";
+import SinglePage from "./Views/SinglePage";
+import CategoryList from "./Components/CategoryList";
+
+
+const Stack = createNativeStackNavigator();
+
+export const apiKEY = '6de738d0b38919877d0cc69ea2de9b06'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={IndexPage} />
+          <Stack.Screen name="Categories" component={CategoryPage} />
+          <Stack.Screen name="Search" component={SearchPage} />
+          <Stack.Screen name="About" component={SinglePage} />
+          <Stack.Screen name="Overview" component={CategoryList} />
+        </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
